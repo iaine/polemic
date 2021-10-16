@@ -2,14 +2,14 @@
 //SinOsc s => PRCRev r => dac;
 SinOsc s => Gain g => dac;
 
-float Anote;
-Std.atoi(me.arg(0)) => int n;
-if (n > 1) {
-    440 * Math.pow(2, (n/12))  =>  Anote;
-} else {
-    440.0 => Anote;
-}
-
+//float Anote;
+Std.atof(me.arg(0)) => float Anote;
+//if (n > 1) {
+//    440 * Math.pow(2, (n/12))  =>  Anote;
+//} else {
+//    440.0 => Anote;
+//}
+Std.atof(me.arg(1)) => float Bnote;
 Std.atof(me.arg(2)) => float weight;
 if (weight == 0.0 ) 0.05 => weight;
 
@@ -20,4 +20,6 @@ vol => g.gain;
 weight::second => now;
 Anote => s.freq;
 weight::second => now;
-Anote * Math.pow(2, (3/12)) => s.freq;
+Bnote => s.freq;
+//Anote * Math.pow(2, (3/12)) => s.freq;
+weight::second => now;
