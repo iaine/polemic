@@ -9,7 +9,7 @@ if (n > 1) {
 } else {
     440.0 => Anote;
 }
-
+Std.atof(me.arg(1)) => float Bnote;
 Std.atof(me.arg(2)) => float weight;
 if (weight == 0.0 ) 0.05 => weight;
 
@@ -20,4 +20,5 @@ vol => g.gain;
 weight::second => now;
 Anote => s.freq;
 weight::second => now;
-Anote * Math.pow(2, (3/12)) => s.freq;
+Bnote => s.freq;
+//Anote * Math.pow(2, (3/12)) => s.freq;
